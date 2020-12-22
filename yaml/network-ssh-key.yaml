@@ -1,0 +1,17 @@
+---
+- name: remove old ssh key
+  hosts: network,!ex2200-dc
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: remove old ssh ssh key
+      junipernetworks.junos.junos_config:
+        lines:
+        - set system login user jesus authentication ssh-ed25519 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICb3E6omX9Y5o0Aqn6wlf9S+zUKeojHtX+7Qf3pFhe1f jesus@pdrtechgurus.com"
+        
+        comment: remove old ssh key
+      
+      register: print_output
+
+    - debug: var=print_output
