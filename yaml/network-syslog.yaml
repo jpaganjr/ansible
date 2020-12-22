@@ -1,0 +1,18 @@
+---
+- name: update syslog
+  hosts: switches 
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: remove old syslog host info
+      junipernetworks.junos.junos_config:
+        lines:
+        - delete system syslog host 192.168.216.12 any any
+        - delete system syslog host 192.168.216.12 port 10514
+        
+        comment: remove syslog host config
+      
+      register: print_output
+
+    - debug: var=print_output

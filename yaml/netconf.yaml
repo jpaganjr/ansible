@@ -1,0 +1,30 @@
+---
+- name: Get netconf info
+  hosts: switches,firewalls
+  roles:
+    - Juniper.junos
+  connection: local
+  gather_facts: no
+
+
+  tasks:
+#   - name: check netconf
+#
+#         wait_for:
+#       host: "{{ inventory_hostname }}"
+#       port: 830
+#       timeout: 15
+#
+#     register: print_output
+#
+#   - debug : var=print_output
+
+   - name: enable netconf
+     junos_netconf:
+       listens_on: 830
+       state: present
+
+     register: print_output
+
+   - debug: var=print_output
+

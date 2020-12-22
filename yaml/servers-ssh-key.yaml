@@ -1,0 +1,19 @@
+---
+- name: add ssh key to servers
+  hosts: servers
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: add new ssh key
+      blockinfile:
+        path: /root/.ssh/authorized_keys
+        block: |
+          ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICb3E6omX9Y5o0Aqn6wlf9S+zUKeojHtX+7Qf3pFhe1f jesus@pdrtechgurus.com
+        
+        backup: yes
+
+      register: print_output
+    - debug: var=print_output
+
+
