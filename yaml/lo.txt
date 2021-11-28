@@ -1,0 +1,690 @@
+ber1-core01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  -----------
+IP:                        127.0.0.1/8
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  Interface Type Other
+fra1-core01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ----------------
+IP:                        127.0.0.1/8
+IP:                        143.131.187.2/32
+IP:                        143.131.187.9/32
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.187.2/32
+  inet 143.131.187.9/32
+  Interface Type Other
+ams1-core01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  -----------
+IP:                        127.0.0.1/8
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  Interface Type Other
+lon1-core01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ----------------
+IP:                        127.0.0.1/8
+IP:                        143.131.168.2/32
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.168.2/32
+  Interface Type Other
+ams1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        143.131.182.1/32
+IP:                        2600:370f:3020::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.182.1/32
+  inet6 2600:370f:3020::1/128
+  Interface Type Other
+lon1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        143.131.168.1/32
+IP:                        2600:370f:3100::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.168.1/32
+  inet6 2600:370f:3100::1/128
+  Interface Type Other
+cph1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.108.1/32
+IP:                        2600:370f:32e0::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.108.1/32
+  inet6 2600:370f:32e0::1/128
+  Interface Type Other
+par1-core01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ----------------
+IP:                        127.0.0.1/8
+IP:                        143.131.184.2/32
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.184.2/32
+  Interface Type Other
+dus1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  --------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.100.1/32
+IP:                        2600:370f:31e0::1/43
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.100.1/32
+  inet6 2600:370f:31e0::1/43
+  Interface Type Other
+ber1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.102.1/32
+IP:                        2600:370f:3220::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.102.1/32
+  inet6 2600:370f:3220::1/128
+  Interface Type Other
+mrs1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        143.131.183.1/32
+IP:                        2600:370f:3080::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.183.1/32
+  inet6 2600:370f:3080::1/128
+  Interface Type Other
+lux1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.104.1/32
+IP:                        2600:370f:3260::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.104.1/32
+  inet6 2600:370f:3260::1/128
+  Interface Type Other
+bcn1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.105.1/32
+IP:                        2600:370f:3280::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.105.1/32
+  inet6 2600:370f:3280::1/128
+  Interface Type Other
+lis1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.106.1/32
+IP:                        2600:370f:32a0::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.106.1/32
+  inet6 2600:370f:32a0::1/128
+  Interface Type Other
+fra1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        143.131.187.1/32
+IP:                        2600:370f:3040::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.187.1/32
+  inet6 2600:370f:3040::1/128
+  Interface Type Other
+mil1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.98.1/32
+IP:                        2600:370f:31a0::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.98.1/32
+  inet6 2600:370f:31a0::1/128
+  Interface Type Other
+ist1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        143.131.170.1/32
+IP:                        2600:370f:30c0::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.170.1/32
+  inet6 2600:370f:30c0::1/128
+  Interface Type Other
+ath1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.103.1/32
+IP:                        2600:370f:3240::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.103.1/32
+  inet6 2600:370f:3240::1/128
+  Interface Type Other
+amm1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        143.131.169.1/32
+IP:                        2600:370f:30e0::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.169.1/32
+  inet6 2600:370f:30e0::1/128
+  Interface Type Other
+mad1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        143.131.167.1/32
+IP:                        2600:370f:3120::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.167.1/32
+  inet6 2600:370f:3120::1/128
+  Interface Type Other
+par1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        143.131.184.1/32
+IP:                        2600:370f:3060::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.184.1/32
+  inet6 2600:370f:3060::1/128
+  Interface Type Other
+muc1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.101.1/32
+IP:                        2600:370f:3200::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.101.1/32
+  inet6 2600:370f:3200::1/128
+  Interface Type Other
+zur1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.99.1/32
+IP:                        2600:370f:31c0::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.99.1/32
+  inet6 2600:370f:31c0::1/128
+  Interface Type Other
+sto1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.96.1/32
+IP:                        2600:370f:3160::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.96.1/32
+  inet6 2600:370f:3160::1/128
+  Interface Type Other
+waw1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        158.247.107.1/32
+IP:                        2600:370f:32c0::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 158.247.107.1/32
+  inet6 2600:370f:32c0::1/128
+  Interface Type Other
+pmo1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        143.131.172.1/32
+IP:                        2600:370f:30a0::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.172.1/32
+  inet6 2600:370f:30a0::1/128
+  Interface Type Other
+vie1-edge01 | CHANGED | rc=0 >>
+    Name  MAC                Speed  MTU    Mode
+--  ----  -----------------  -----  -----  --------
+UP  lo    00:00:00:00:00:00  N/A    65536  Loopback
+
+IP Details
+-------------------------  ---------------------
+IP:                        127.0.0.1/8
+IP:                        143.131.164.1/32
+IP:                        2600:370f:3140::1/128
+IP:                        ::1/128
+IP Neighbor(ARP) Entries:  0
+
+Routing
+-------
+  Interface lo is up, line protocol is up
+  Link ups:       0    last: (never)
+  Link downs:     0    last: (never)
+  PTM status: disabled
+  vrf: default
+  index 1 metric 0 mtu 65536 speed 0
+  flags: <UP,LOOPBACK,RUNNING>
+  Type: Loopback
+  inet 143.131.164.1/32
+  inet6 2600:370f:3140::1/128
+  Interface Type Other

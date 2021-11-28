@@ -1,0 +1,14 @@
+---
+- name: get interface info
+  hosts: ist-tisparkle-sw1
+  gather_facts: false
+  connection: local
+  
+  
+  tasks:
+    - name: get interface alias
+      nclu:
+        commands:
+            - show interface alias
+      register: output
+

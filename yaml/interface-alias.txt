@@ -1,0 +1,455 @@
+tyo1-edge01 | CHANGED | rc=0 >>
+State  Name            Mode          Alias
+-----  --------------  ------------  -------------------------------------------------------------
+UP     lo              Loopback
+UP     eth0            Mgmt
+UP     swp1            Access/L2     server1-eno1
+UP     swp2            Access/L2     server1-eno2
+UP     swp3            Access/L2     server2-eno1
+UP     swp4            Access/L2     server2-eno2
+UP     swp5            Access/L2     server3-eno1
+UP     swp6            Access/L2     server3-eno2
+DN     swp7            Access/L2     server4-eno1
+UP     swp8            Access/L2     server4-eno2
+DN     swp9            Default
+DN     swp10           Default
+DN     swp11           Default
+DN     swp12           Default
+DN     swp13           Trunk/L2      admin-srv-eno1
+DN     swp14           Access/L2
+UP     swp15           Access/L2
+DN     swp16           Default
+DN     swp17           Default
+DN     swp18           Default
+DN     swp19           Default
+UP     swp20           Interface/L3
+DN     swp21           Default
+DN     swp22           Default
+DN     swp23           Default
+DN     swp24           Default
+UP     swp25           BondMember
+UP     swp26           BondMember
+UP     swp29           BondMember
+UP     swp30           BondMember
+DN     swp31           Default
+DN     swp32           Default
+DN     swp33           Default
+DN     swp34           Default
+UP     swp35           BondMember    [bond1]WAVE:telstra:10G:hkg1-edge01:swp47:HKG TOK EPL 9436325
+UP     swp36           BondMember    [bond1]WAVE:telstra:10G:hkg1-edge01:swp48:HKG TOK EPL 9886017
+UP     swp37           BondMember    [bond5]WAVE:telstra:10G:sin1-edge01:swp36:SNG TOK EPL 9430526
+UP     swp38           BondMember    [bond5]WAVE:telstra:10G:sin1-edge01:swp37:SNG TOK EPL 9547642
+UP     swp39           BondMember    [bond4]IXP:bbix:1:10G:23640:01583-TK3-X-I-0001
+UP     swp40           Default       WIP-WAVE:telstra:10G:mnl1-edge01:tbd:MKI TOK EPL 9973455
+UP     swp41           Interface/L3  WAVE:telstra:10G:sel1-edge01:swp46:SEL TOK EPL 9321502
+UP     swp42           BondMember    [bond3]PNI:aws-dx:1:10G:7224:dxcon-fffx74f8
+UP     swp43           BondMember    [bond3]PNI:aws-dx:2:10G:7224:dxcon-fh5u92yr
+UP     swp44           Default       TELSTRA-SDN:Con-524:CID-TPN-9175054:SN-21402489
+UP     swp45           Interface/L3  TELSTRA-IPT:Con-595:CID-TOK-IPT-9194106:SN-21412477
+UP     swp46           Interface/L3  PCCW-IPT-CON-597:CID-SR168725:SN-21415541
+UP     swp47           BondMember    [bond2]IX:jpnap:1:10G:IX1_0347_SUBSPACE_1-A-1
+UP     swp48           BondMember    [bond2]IX:jpnap:2:10G:IX1_0347_SUBSPACE_1-A-2
+UP     swp49           BondMember    JPIX-LAG1:CON-363
+UP     swp50           BondMember    JPIX-LAG2:CON-363
+UP     swp51           BondMember    [bond3]PNI:aws-dx:3:10G:7224:dxcon-fh50qp9q
+UP     swp52           Interface/L3  NTT-IPT:CON-594
+DN     swp53           Default
+UP     swp54           BondMember    [bond3]PNI:aws-dx:4:10G:7224:dxcon-fgp4oz2j
+UP     bond1           802.3ad       LAG-WAVE:telstra:20G:hkg1-edge01
+UP     bond2           802.3ad       LAG-IX:jpnap:1:20G
+UP     bond3           802.3ad
+UP     bond3.1100      SubInt/L3     LAG-PNI:aws-dx:1:40G:7224:dxlag-fhe8780c
+UP     bond4           802.3ad       LAG-IXP:bbix:1:10G
+UP     bond5           802.3ad       LAG-WAVE:telstra:20G:sin1-edge01
+UP     bond-core01     802.3ad
+UP     bridge          Bridge/L2
+UP     jpix-bond       802.3ad       20G-JPIX-Bond:MAC-50:9a:4c:e9:fe:ab
+UP     jpix-bond.1100  SubInt/L3
+UP     jpix-bond.3214  SubInt/L3
+UP     vlan101         Interface/L3  ipmi-net
+UP     vlan311         Interface/L3
+UP     vlan511         Interface/L3
+UP     vlan811         Interface/L3
+UP     vlan1001        Interface/L3  WAVE:telstra:10G:sin1-edge01:swp37:SNG TOK EPL 9547642
+UP     vlan1002        Interface/L3  WAVE:telstra:10G:hkg1-edge01:swp48:HKG TOK EPL 9886017
+tyo1-core01 | CHANGED | rc=0 >>
+State  Name         Mode          Alias
+-----  -----------  ------------  -----
+UP     lo           Loopback
+UP     eth0         Mgmt
+UP     swp1         Trunk/L2
+UP     swp2         Trunk/L2
+UP     swp3         Trunk/L2
+UP     swp4         Trunk/L2
+DN     swp5         Default
+DN     swp6         Default
+DN     swp7         Default
+DN     swp8         Default
+UP     swp9s0       Trunk/L2
+UP     swp9s1       Trunk/L2
+UP     swp9s2       Access/L2
+UP     swp9s3       Default
+DN     swp10        Default
+DN     swp11        Default
+DN     swp12        Default
+DN     swp13        Default
+DN     swp14        Default
+DN     swp15        Default
+DN     swp16        Default
+UP     swp17        BondMember
+UP     swp18        BondMember
+UP     swp19        BondMember
+UP     swp20        BondMember
+DN     swp21        Default
+DN     swp22        Default
+DN     swp23        Default
+DN     swp24        Default
+DN     swp25        Default
+DN     swp26        Default
+DN     swp27        Default
+DN     swp28        Default
+DN     swp29        Default
+DN     swp30        Default
+DN     swp31        Default
+DN     swp32        Default
+UP     bond-edge01  802.3ad
+UP     bridge       Bridge/L2
+UP     vlan311      Interface/L3
+UP     vlan511      Default
+sel1-core01 | CHANGED | rc=0 >>
+State  Name         Mode           Alias
+-----  -----------  -------------  -----
+UP     lo           Loopback
+UP     eth0         Mgmt
+UP     swp1         Trunk/L2
+UP     swp2         Access/L2
+UP     swp3         Trunk/L2
+UP     swp4         Access/L2
+ADMDN  swp5         NotConfigured
+ADMDN  swp6         NotConfigured
+ADMDN  swp7         NotConfigured
+ADMDN  swp8         NotConfigured
+UP     swp9s0       Trunk/L2
+UP     swp9s1       Trunk/L2
+UP     swp9s2       Default
+UP     swp9s3       Trunk/L2
+ADMDN  swp10        NotConfigured
+ADMDN  swp11        NotConfigured
+DN     swp12        Trunk/L2
+DN     swp13        Trunk/L2
+DN     swp14        Trunk/L2
+DN     swp15        Trunk/L2
+DN     swp16        Trunk/L2
+UP     swp17        BondMember
+UP     swp18        BondMember
+UP     swp19        BondMember
+UP     swp20        BondMember
+ADMDN  swp21        NotConfigured
+ADMDN  swp22        NotConfigured
+ADMDN  swp23        NotConfigured
+ADMDN  swp24        NotConfigured
+ADMDN  swp25        NotConfigured
+ADMDN  swp26        NotConfigured
+ADMDN  swp27        NotConfigured
+ADMDN  swp28        NotConfigured
+ADMDN  swp29        NotConfigured
+ADMDN  swp30        NotConfigured
+ADMDN  swp31        NotConfigured
+ADMDN  swp32        NotConfigured
+UP     bond-edge01  802.3ad
+UP     bridge       Bridge/L2
+UP     vlan311      Interface/L3
+UP     vlan511      Default
+hkg1-core01 | CHANGED | rc=0 >>
+State  Name         Mode          Alias
+-----  -----------  ------------  -----
+UP     lo           Loopback
+UP     eth0         Mgmt
+UP     swp1         Trunk/L2
+UP     swp2         Trunk/L2
+UP     swp3         Trunk/L2
+UP     swp4         Trunk/L2
+DN     swp5         Trunk/L2
+DN     swp6         Trunk/L2
+DN     swp7         Trunk/L2
+DN     swp8         Trunk/L2
+UP     swp9s0       Trunk/L2
+UP     swp9s1       Trunk/L2
+UP     swp9s2       Default
+UP     swp9s3       Trunk/L2
+DN     swp10        Default
+DN     swp11        Default
+DN     swp12        Default
+DN     swp13        Default
+DN     swp14        Default
+DN     swp15        Default
+DN     swp16        Default
+UP     swp17        BondMember
+UP     swp18        BondMember
+UP     swp19        BondMember
+UP     swp20        BondMember
+DN     swp21        Default
+DN     swp22        Default
+DN     swp23        Default
+DN     swp24        Default
+DN     swp25        Default
+DN     swp26        Default
+DN     swp27        Default
+DN     swp28        Default
+DN     swp29        Default
+DN     swp30        Default
+DN     swp31        Default
+DN     swp32        Default
+UP     bond-edge01  802.3ad
+UP     bridge       Bridge/L2
+UP     vlan311      Interface/L3
+UP     vlan511      Interface/L3
+hkg1-edge01 | CHANGED | rc=0 >>
+State  Name         Mode          Alias
+-----  -----------  ------------  -------------------------------------------------------------
+UP     lo           Loopback
+UP     eth0         Mgmt
+UP     swp1         Access/L2
+UP     swp2         Access/L2
+UP     swp3         Access/L2
+UP     swp4         Access/L2
+DN     swp5         Default
+DN     swp6         Default
+DN     swp7         Default
+DN     swp8         Default
+DN     swp9         Default
+DN     swp10        Default
+DN     swp11        Default
+DN     swp12        Default
+DN     swp13        Access/L2
+DN     swp14        Access/L2
+DN     swp15        Access/L2
+DN     swp16        Default
+DN     swp17        Default
+DN     swp18        Default
+DN     swp19        Default
+DN     swp20        Default
+DN     swp21        Default
+UP     swp22        Access/L2
+DN     swp23        Default
+UP     swp24        Interface/L3  temp-oob-mega-i
+UP     swp25        BondMember
+UP     swp26        BondMember
+UP     swp29        BondMember
+UP     swp30        BondMember
+DN     swp31        Default
+DN     swp32        Default
+DN     swp33        Default
+DN     swp34        Default
+DN     swp35        Default
+DN     swp36        Default
+DN     swp37        Default
+DN     swp38        Default
+DN     swp39        Default
+DN     swp40        Default
+DN     swp41        Default
+DN     swp42        Default
+DN     swp43        Interface/L3  OOB:tesltra:CON-368
+UP     swp44        BondMember    [bond4]WAVE:telstra:10G:sin1-edge01:swp51:HKG SNG EPL 9220642
+DN     swp45        BondMember    [bond4]WAVE:telstra:10G:sin1-edge01:swp52:HKG SNG EPL9694473
+UP     swp46        BondMember    [bond3]IXP:bbix:1:10G:59360:01583-HK1-X-I-0001
+UP     swp47        BondMember    [bond1]WAVE:telstra:10G:tyo1-edge01:swp35:HKG TOK EPL 9436325
+UP     swp48        BondMember    [bond1]WAVE:telstra:10G:tyo1-edge01:swp36:HKG TOK EPL 9886017
+UP     swp49        BondMember    [bond5]IXP:hkix:1:10G:EthernetHKIX3b-135
+UP     swp50        BondMember    [bond5]IXP:hkix:2:10G:EthernetHKIX3b-195
+DN     swp51        Default       WIP-WAVE:telstra:10G:bangkok:swp14s0:BKK HKG EPL 9388748
+DN     swp52        Default
+UP     swp53        Interface/L3  PCCW-IPT:CON-602
+UP     swp54        Interface/L3  TELSTRA-IPT:CON-601
+UP     bond1        802.3ad       LAG-WAVE:telstra:20G:tyo1-edge01
+UP     bond3        802.3ad       LAG-IXP:bbix:1:10G
+UP     bond4        802.3ad       WAVE:telstra:20G:hkg-sin
+UP     bond5        802.3ad       LAG-IXP:hkix:1:20G
+UP     bond-core01  802.3ad
+UP     bridge       Bridge/L2
+UP     vlan101      Interface/L3  ipmi-net
+UP     vlan311      Interface/L3
+UP     vlan511      Interface/L3
+UP     vlan811      Interface/L3
+UP     vlan1001     Interface/L3  wave to sin1
+UP     vlan1002     Interface/L3  WAVE:telstra:20G:tyo1-edge01
+sel1-edge01 | CHANGED | rc=0 >>
+State  Name         Mode           Alias
+-----  -----------  -------------  ------------------------------------------------------
+UP     lo           Loopback
+UP     eth0         Mgmt
+UP     swp1         Access/L2
+UP     swp2         Access/L2
+UP     swp3         Access/L2
+UP     swp4         Access/L2
+ADMDN  swp5         NotConfigured
+ADMDN  swp6         NotConfigured
+ADMDN  swp7         NotConfigured
+ADMDN  swp8         NotConfigured
+ADMDN  swp9         NotConfigured
+ADMDN  swp10        NotConfigured
+ADMDN  swp11        NotConfigured
+ADMDN  swp12        NotConfigured
+DN     swp13        Trunk/L2       admin-srv-eno1
+DN     swp14        Access/L2
+DN     swp15        Access/L2
+ADMDN  swp16        NotConfigured
+ADMDN  swp17        NotConfigured
+ADMDN  swp18        NotConfigured
+ADMDN  swp19        NotConfigured
+ADMDN  swp20        NotConfigured
+ADMDN  swp21        NotConfigured
+UP     swp22        Access/L2      fscom-oob-sw1
+ADMDN  swp23        NotConfigured
+UP     swp24        Interface/L3   OOB:kinx
+UP     swp25        BondMember
+UP     swp26        BondMember
+UP     swp29        BondMember
+UP     swp30        BondMember
+ADMDN  swp31        NotConfigured
+ADMDN  swp32        NotConfigured
+ADMDN  swp33        NotConfigured
+ADMDN  swp34        NotConfigured
+ADMDN  swp35        NotConfigured
+ADMDN  swp36        NotConfigured
+ADMDN  swp37        NotConfigured
+ADMDN  swp38        NotConfigured
+ADMDN  swp39        NotConfigured
+ADMDN  swp40        NotConfigured
+ADMDN  swp41        NotConfigured
+ADMDN  swp42        NotConfigured
+UP     swp43        Interface/L3   KINX-IXP:CON-366
+UP     swp44        Interface/L3   TELSTRA-IPT:CON-365
+DN     swp45        Interface/L3   PCCW-IPT:CON-653
+UP     swp46        Interface/L3   WAVE:telstra:10G:tyo1-edge01:swp41:SEL TOK EPL 9321502
+ADMDN  swp47        NotConfigured
+ADMDN  swp48        NotConfigured
+ADMDN  swp49        NotConfigured
+ADMDN  swp50        NotConfigured
+ADMDN  swp51        NotConfigured
+ADMDN  swp52        NotConfigured
+ADMDN  swp53        NotConfigured
+ADMDN  swp54        NotConfigured
+UP     bond-core01  802.3ad
+UP     bridge       Bridge/L2
+UP     vlan101      Interface/L3   ipmi-net
+UP     vlan311      Interface/L3
+UP     vlan511      Interface/L3
+UP     vlan811      Interface/L3
+sin1-core01 | CHANGED | rc=0 >>
+State  Name         Mode           Alias
+-----  -----------  -------------  -----
+UP     lo           Loopback
+UP     eth0         Mgmt
+UP     swp1         Trunk/L2
+UP     swp2         Access/L2
+UP     swp3         Trunk/L2
+UP     swp4         Access/L2
+UP     swp5         Trunk/L2
+UP     swp6         Access/L2
+UP     swp7         Trunk/L2
+UP     swp8         Access/L2
+UP     swp9s0       Trunk/L2
+UP     swp9s1       Trunk/L2
+UP     swp9s2       Default
+UP     swp9s3       Access/L2
+ADMDN  swp10        NotConfigured
+ADMDN  swp11        NotConfigured
+ADMDN  swp12        NotConfigured
+ADMDN  swp13        NotConfigured
+ADMDN  swp14        NotConfigured
+ADMDN  swp15        NotConfigured
+ADMDN  swp16        NotConfigured
+UP     swp17        BondMember
+UP     swp18        BondMember
+UP     swp19        BondMember
+UP     swp20        BondMember
+ADMDN  swp21        NotConfigured
+ADMDN  swp22        NotConfigured
+ADMDN  swp23        NotConfigured
+ADMDN  swp24        NotConfigured
+ADMDN  swp25        NotConfigured
+ADMDN  swp26        NotConfigured
+ADMDN  swp27        NotConfigured
+ADMDN  swp28        NotConfigured
+ADMDN  swp29        NotConfigured
+ADMDN  swp30        NotConfigured
+ADMDN  swp31        NotConfigured
+ADMDN  swp32        NotConfigured
+UP     bond-edge01  802.3ad
+UP     bridge       Bridge/L2
+UP     vlan311      Interface/L3
+UP     vlan511      Default
+sin1-edge01 | CHANGED | rc=0 >>
+State  Name         Mode           Alias
+-----  -----------  -------------  --------------------------------------------------------------------------
+UP     lo           Loopback
+UP     eth0         Mgmt
+UP     swp1         Trunk/L2
+UP     swp2         Access/L2
+UP     swp3         Trunk/L2
+UP     swp4         Access/L2
+ADMDN  swp5         NotConfigured
+UP     swp6         Access/L2
+ADMDN  swp7         NotConfigured
+UP     swp8         Access/L2
+ADMDN  swp9         NotConfigured
+ADMDN  swp10        NotConfigured
+ADMDN  swp11        NotConfigured
+ADMDN  swp12        NotConfigured
+DN     swp13        Trunk/L2       admin-srv-eno1
+DN     swp14        Default
+DN     swp15        Access/L2      oob-fs-sw
+ADMDN  swp16        NotConfigured
+ADMDN  swp17        NotConfigured
+ADMDN  swp18        NotConfigured
+ADMDN  swp19        NotConfigured
+ADMDN  swp20        NotConfigured
+ADMDN  swp21        NotConfigured
+UP     swp22        Access/L2
+UP     swp23        Default        sin01-ts01:n
+UP     swp24        Default
+UP     swp25        BondMember
+UP     swp26        BondMember
+UP     swp29        BondMember
+UP     swp30        BondMember
+ADMDN  swp31        NotConfigured
+DN     swp32        Default        WIP-WAVE:pccw:1G:malaysia:tbd:tbd:
+ADMDN  swp33        NotConfigured
+ADMDN  swp34        NotConfigured
+DN     swp35        Default        WIP-WAVE:stratanet:10G:malaysia:tbd:tbd
+UP     swp36        BondMember     [bond5]WAVE:telstra:10G:tyo1-edge01:swp37:SNG TOK EPL 9430526
+UP     swp37        BondMember     [bond5]WAVE:telstra:10G:tyo1-edge01:swp38:SNG TOK EPL 9547642
+UP     swp38        Default        WIP-WAVE:telstra:10G:manila:tbd:tbd
+UP     swp39        BondMember     [bond3]AWS-DX:CON-757:SERIAL-21477083-A:CID-dxcon-fffkkp3s
+UP     swp40        BondMember     [bond3]AWS-DX:CON-757:SERIAL-21477072-A:CID-dxcon-ffx410bp
+UP     swp41        Interface/L3   WAVE:stratanet:10G:jkt1-core01:swp12s0:RGWLS18273
+UP     swp42        Interface/L3   WIP-PNI:myrepublic:1:10G:56300:CON-676
+UP     swp43        BondMember     Equinix-IX-Singapore--CON-341-SN-21400525
+UP     swp44        BondMember     Equinix-IX-Singapore-CON-617-SN-21400529
+UP     swp45        Interface/L3   alias NTT-IPT-CON-598-CID-USID-297033-SN-21400614-A
+UP     swp46        Interface/L3   TELSTRA-IPT-CON-TBD-SN-21413656
+UP     swp47        BondMember     SG-IX-LAG-1-of-2-CON-600-SN-21400546
+UP     swp48        Default        TELSTRA-SDN-CON-523-SN-21404715
+UP     swp49        BondMember     SG-IX-LAG-2-of-2-CON-619-SN-21400520
+UP     swp50        Interface/L3   PCCW-IPT:CON-599:SN-TBD:CID-SR168724
+UP     swp51        BondMember     [bond4]WAVE:telstra:10G:subspace-hkg-megai-sw1-1:swp44:HKG SNG EPL 9220642
+DN     swp52        BondMember     [bond4]WAVE:telstra:10G:subspace-hkg-megai-sw1-1:swp45:HKG SNG EPL9694473
+UP     swp53        BondMember     [bond3]AWS-DX:CON-757:SERIAL-21471840-A:CID-dxcon-fgn5wstl
+UP     swp54        BondMember     [bond3]AWS-DX:CON-757:SERIAL-21477084-A:CID-dxcon-fggcaezz
+UP     bond1        802.3ad        Equinix-IX-Singapore-CON-617-SN-21400529
+UP     bond1.599    SubInt/L3      Equinix-IX-Singapore-CON-617-SN-21400529
+UP     bond2        802.3ad        SG-IX-IX:CON-600:CON-619
+UP     bond3        802.3ad
+UP     bond3.1100   SubInt/L3      AWS-DX:dxlag-fh3we7k9
+UP     bond4        802.3ad        WAVE:telstra:10G:sin-hkg
+UP     bond5        802.3ad        LAG-WAVE:telstra:20G:tyo1-edge01
+UP     bond-core01  802.3ad
+UP     bridge       Bridge/L2
+UP     vlan101      Interface/L3   ipmi-net
+UP     vlan311      Interface/L3   in-band-mgmt
+UP     vlan511      Interface/L3   n-net
+UP     vlan711      Interface/L3   pxe-net
+UP     vlan811      Interface/L3   bgp-proxy-net
+UP     vlan1001     Interface/L3   wave to hkg
+UP     vlan1002     Interface/L3   WAVE:telstra:10G:tyo1-edge01:swp38:SNG TOK EPL 9547642

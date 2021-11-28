@@ -1,0 +1,61 @@
+---
+
+- name: Weekly seeder updates
+  hosts: greedo
+  gather_facts: no
+  #  connection: local
+  
+  tasks:
+  - name: stop download services
+    systemd:
+      name: '{{item}}'
+      state: stopped
+    with_items:
+        - radarr
+        - sabnzbd
+        - sonarr
+        - transmission-daemon
+    tags:
+    - stopservices
+    register: print_output
+  - debug: var=print_output
+
+  - name: Disconnet nordvpn service
+    shell: 'nordvpn d'
+    tags:
+    - norddisconnect
+    register: print_output
+  - debug: var=print_output
+
+  - name: nordvpn reconnect
+    shell: 'nordvpn c'
+    tags:
+    - nordreconnect
+    register: print_output
+  - debug: var=print_output
+
+  - name: start download services
+    systemd:
+      name: '{{item}}'
+      state: started
+    with_items:
+        - radarr
+        - sabnzbd
+        - sonarr
+        - transmission-daemon
+    tags:
+    - startservices
+    register: print_output
+  - debug: var=print_output
+
+  - name: check service status
+    command: systemctl status '{{item}}'
+    with_items:
+        - radarr
+        - sabnzbd
+        - sonarr
+        - transmission-daemon
+    tags:
+    - checkservices
+    register: result
+  - debug: var=result

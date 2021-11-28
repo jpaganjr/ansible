@@ -1,0 +1,285 @@
+---
+- name: Add vlans Core Switches
+  hosts: coreswitches
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: add show pre-pro vlan to core
+      nxos_vlan:
+        vlan_id: 2200
+        name: P16_PRE_PRO
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:
+        vlan_id: 2201
+        name: P16_PRO
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:
+        vlan_id: 2202
+        name: P16_ACC
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2203
+        name: P16_WIF
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2204
+        name: P16_ART
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2205
+        name: P16_CON
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2206
+        name: P16_PRI
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2207
+        name: P16_VFX
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2208
+        name: P16_EDI
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2209
+        name: P16_MOC
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2210
+        name: P16_SHO_INT
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2211
+        name: P16_DI
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2212
+        name: P16_DLS
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2213
+        name: P16_PRE_VIS
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2214
+        name: P16_TTF_CINESYNC
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2227
+        name: RED-P16_SEC
+      register: print_output
+    - debug: var=print_output
+    - name: add show pre-pro vlan to core
+      nxos_vlan:  
+        vlan_id: 2228
+        name: RED-P16_ISIS 
+      register: print_output
+    - debug: var=print_output 
+    
+- name: Add vlans B78 access Switches
+  hosts: b78access
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: add show vlans to core
+      ios_vlan:
+        vlan_id: 2200
+        name: P16_PRE_PRO
+        state: active
+      register: print_output 
+    - debug: var=print_output
+        
+    - name: add show vlans to core 
+      ios_vlan: 
+        name: P16_PRO
+        vlan_id: 2201
+        state: active
+      register: print_output 
+    - debug: var=print_output
+        
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_ACC
+        vlan_id: 2202
+        state: active
+      register: print_output
+    - debug: var=print_output
+        
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_WIF
+        vlan_id: 2203
+        state: active
+      register: print_output
+       
+    - debug: var=print_output
+        
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_ART
+        vlan_id: 2204
+        state: active
+      register: print_output 
+    - debug: var=print_output
+        
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_CON
+        vlan_id: 2205
+        state: active
+      register: print_output
+    - debug: var=print_output
+        
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_PRI
+        vlan_id: 2206
+        state: active
+      register: print_output
+    - debug: var=print_output
+        
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_VFX
+        vlan_id: 2207
+        state: active
+      register: print_output
+    - debug: var=print_output
+        
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_EDI
+        vlan_id: 2208
+        state: active
+      register: print_output
+       
+    - debug: var=print_output
+        
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_MOC
+        vlan_id: 2209
+        state: active
+      register: print_output
+    - debug: var=print_output
+        
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_SHO_INT
+        vlan_id: 2210
+        state: active
+      register: print_output
+    - debug: var=print_output
+        
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_DI
+        vlan_id: 2211
+        state: active
+      register: print_output 
+    - debug: var=print_output
+    
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_DLS
+        vlan_id: 2212
+        state: active
+      register: print_output
+    - debug: var=print_output
+        
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_PRE_VIS
+        vlan_id: 2213
+        state: active
+      register: print_output
+    - debug: var=print_output
+    
+    - name: add show vlans to core
+      ios_vlan:
+        name: P16_TTF_CINESYNC
+        vlan_id: 2214
+        state: active
+      register: print_output 
+    - debug: var=print_output
+    
+    - name: add show vlans to core
+      ios_vlan:
+        name: RED-P16_SEC
+        vlan_id: 2227
+        state: active
+      register: print_output
+    - debug: var=print_output
+    
+    - name: add show vlans to core
+      ios_vlan:
+        name: RED-P16_ISIS  
+        vlan_id: 2228
+        state: active  
+      register: print_output
+    - debug: var=print_output       
+    
+- name: add show vlans to juniper access/agg switches fgw/b78 
+  hosts: fgwaccess:aggswitch
+  gather_facts: no
+  connection: local
+  
+  tasks:
+    - name: Add show vlans
+      junos_config:
+        lines:
+          - set vlans P16_ACC vlan-id 2202
+          - set vlans P16_ART vlan-id 2204
+          - set vlans P16_CON vlan-id 2205
+          - set vlans P16_DI vlan-id 2211
+          - set vlans P16_DLS vlan-id 2212
+          - set vlans P16_EDI vlan-id 2208
+          - set vlans P16_MOC vlan-id 2209
+          - set vlans P16_PRE_PRO vlan-id 2200
+          - set vlans P16_PRE_VIS vlan-id 2213
+          - set vlans P16_PRI vlan-id 2206
+          - set vlans P16_PRO vlan-id 2201
+          - set vlans P16_SHO_INT vlan-id 2210
+          - set vlans P16_VFX vlan-id 2207
+          - set vlans P16_WIF vlan-id 2203
+          - set vlans RED_P16_ISIS vlan-id 2228
+          - set vlans RED_P16_SEC vlan-id 2227
+        comment: add show vlans
+    
+      register: print_output
+       
+    - debug: var=print_output       
+ 

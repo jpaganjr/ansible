@@ -1,0 +1,28 @@
+---
+- name: network monitoring setup
+  hosts: ams1-core01, lon1-core01, par1-core01, fra1-core01
+  gather_facts: false
+
+  tasks:
+    - name: Copy base files to /opt
+      copy:
+        src: /Users/jpagan/Downloads/monitoring
+        dest: /opt
+        remote_src: no
+
+    - name: Make node_exporter excecutable
+      file:
+        dest: /opt/monitoring/node_exporter
+        mode: a+x
+
+    - name: Copy node-exporter serivce file
+      copy:
+        src: /opt/monitoring/node_exporter.service
+        dest: /etc/systemd/system/
+        remote_src: yes
+
+    - name: Enable node exporter service
+      systemd:
+        name: node_exporter
+        enabled: yes
+

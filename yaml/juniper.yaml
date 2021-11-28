@@ -1,0 +1,13 @@
+---
+- name: test ansible playbook
+  hosts: dcsrx
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: get version info
+      junos_command:
+        commands: show version
+      register: print_output
+    - debug: var=print_output      
+

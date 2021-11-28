@@ -1,0 +1,63 @@
+---
+
+- name: mumbai
+  hosts: cumulux-gpx
+  gather_facts: false
+  
+  tasks:
+  - name: copy new daemon and backup the current
+    copy: 
+      src: '{{item}}'
+      dest: /usr/local/bin
+      mode: 0644
+      backup: yes
+      remote_src: yes
+    with_items:
+        - /root/gobgp_new/gobgp
+        - /root/gobgp_new/gobgpd
+    tags:
+    - copy
+    register: print_output
+  - debug: var=print_output
+  
+  - name: restart gobgp daemon
+    systemd:
+      name: '{{item}}'
+      state: restarted
+    with_items:
+        - gobgpd
+        - gobgpd-peering
+    tags:
+    - restart
+    register: print_output
+  - debug: var=print_output
+  
+  - name: reannounce overlays and site local
+    shell: '{{item}}'
+    with_items: 
+        - gobgp g r a -a ipv4 143.131.160.0/24
+        - gobgp g r a -a ipv4 143.131.161.0/24
+        - gobgp g r a -a ipv4 170.52.0.0/24
+        - gobgp g r a -a ipv4 170.52.1.0/24
+        - gobgp g r a -a ipv4 170.52.7.0/24
+        - gobgp g r a -a ipv4 2600:370f:1060::/43
+        - gobgp g r a -a ipv4 2600:370f:2020::/43
+        - gobgp -p 50059 g r a -a ipv4 143.131.160.0/24
+        - gobgp -p 50059 g r a -a ipv4 143.131.161.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.0.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.1.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.7.0/24
+    tags:
+    - announce
+    register: print_output
+  - debug: var=print_output
+
+  - name: verify announcements mumbai
+    shell: '{{item}}'
+    with_items:
+        - gobgp n 115.110.234.246 adj-out 
+        - gobgp n 2001:4528:fff:d5::1 adj-out
+    tags:
+    - verify
+    register: print_output
+  - debug: var=print_output

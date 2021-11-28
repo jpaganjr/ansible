@@ -1,0 +1,13 @@
+---
+- name: check ping exporter
+  hosts: euswitches
+  gather_facts: false
+
+  tasks:
+   - name: Check service status
+     service_facts:
+
+   - name: try and get ping-exporter service status
+     fail:
+       msg: Ping Exporter is not installed
+     when: ansible_facts.services["ping-exporter-1.service"] is not defined

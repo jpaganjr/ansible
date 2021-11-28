@@ -1,0 +1,21 @@
+---
+- name: Manage Core Switches
+  hosts: fgw-mdf-cs01, b78-mdf-cs02
+  gather_facts: false
+  connection: local
+
+  vars:
+    cli:
+      username: jpagan
+      password: @llwrk0pl@y4U
+
+  tasks:
+    - name: Get Version
+      ios_command:
+        commands:
+            - show version
+            
+      register: print_output
+
+    -  debug: var=print_output
+

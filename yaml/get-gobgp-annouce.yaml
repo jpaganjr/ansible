@@ -1,0 +1,75 @@
+---
+
+- name: stc dam
+  hosts: subspace-dmm-sw1
+  gather_facts: false
+
+  tasks:
+  - name: get gobgp announce stc dmm
+    shell: "gobgp -p 50053 n 84.235.125.208 adj-out"
+    register: print_output
+  - debug: var=print_output
+  
+- name: viva bh
+  hosts: subspace-bh
+  gather_facts: false
+
+  tasks:
+  - name: get gobgp annonce viva bh
+    shell: "gobgp -p 50053 n 185.143.126.81 adj-out"
+    register: print_output
+  - debug: var=print_output
+  
+- name: mumbai
+  hosts: cumulux-gpx
+  gather_facts: false
+
+  tasks:
+  - name: get gobgp announce mumbai
+    shell: "{{ item }}"
+    with_items:
+      - gobgp n 115.110.234.245 adj-out
+      - gobgp n 2001:4528:fff:d5::2 adj-out
+      - gobgp -p 50059 n 72.14.197.174 adj-out
+      - gobgp -p 50059 n 2001:df2:1900:2::160 adj-out
+    register: print_output
+  - debug: var=print_output
+ 
+- name: fuj
+  hosts: subspace-fuj
+  gather_facts: false
+
+  tasks:
+  - name: get gobgp announce fuj
+    shell: "{{ item }}"
+    with_items:
+      - gobgp n 195.229.29.149 adj-out
+      - gobgp -p 50059 n 72.14.198.132 adj-out
+      - gobgp -p 50059 n 2001:7f8:7a::13:8322:1 adj-out
+    register: print_output
+  - debug: var=print_output
+  
+- name: dam mobily
+  hosts: subspace-mob-dam1
+  gather_facts: false
+
+  tasks:
+  - name: get gobgp announce dam mob
+    shell: "gobgp n 86.51.21.42 adj-out"
+    register: print_output
+  - debug: var=print_output
+  
+- name: dubai
+  hosts: subspace-dx1
+  gather_facts: false
+
+  tasks:
+  - name: get gobgp announce dbx1
+    shell: "{{ item }}"
+    with_items:
+      - gobgp n 80.81.65.37 adj-out
+      - gobgp n 2001:1a00:acca:1087::1 adj-out
+      - gobgp -p 50059 n 185.1.8.1 adj-out
+      - gobgp -p 50059 n 2001:7f8:73::224d:0:1 adj-out
+    register: print_output
+  - debug: var=print_output

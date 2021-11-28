@@ -1,0 +1,20 @@
+6%sJ$Iy9ZV8#mNP45jlUqEx39$
+
+
+6%sJ$Iy9ZV8#mNP45jlUqEx39$
+
+
+
+in lhr we have a direct peer through and exchange to Netactuate but the best route to FRA-AWS from LHR is the internet for some reason still chasing it down
+
+
+
+195.229.29.150
+
+
+
+grpcurl  -max-time=30.0 -protoset api/billboard_cloud/v1alpha1/protos/billboard_cloud.protoset -d '{"overlay": "#{overlay_dst}", "agent": "#{agent_name}"}' billboard-cloud.billboard-cloud.holodeck.svc.gcp-cluster-a.europe.ftlprod.net:443  subspace.billboard_cloud.v1alpha1.CloudAgent/CompareOverlayPairByAgent1
+
+
+
+grpcurl -max-time=30.0 -protoset veritas/api/billboard_cloud/v1alpha1/protos/billboard_cloud.protoset -d '{"overlays": ["143.131.175.0", "143.131.176.0", "143.131.177.0", "143.131.178.0", "143.131.179.0", "143.131.180.0", "143.131.181.0"], "agents": []}' billboard-cloud.billboard-cloud.holodeck.svc.gcp-cluster-a.europe.ftlprod.net:443  subspace.billboard_cloud.v1alpha1.Cloud/GetAgentsByOverlays

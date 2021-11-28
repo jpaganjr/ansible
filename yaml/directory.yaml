@@ -1,0 +1,13 @@
+---
+- name: check for monitoring directory
+  hosts: menaswitches, euswitches  
+  gather_facts: false
+  
+  tasks:
+  - name: check for directory
+    stat:
+      path: /opt/monitoring
+    register: p
+  - debug:
+      msg: "Path exists and is directory"
+    when: p.stat.isdir is defined and p.stat.isdir

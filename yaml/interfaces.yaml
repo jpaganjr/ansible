@@ -1,0 +1,14 @@
+---
+- name: check interface status
+  hosts: ams1-edge01
+  gather_facts: false
+
+
+  tasks:
+  - name: check interfaces
+    nclu:
+      commands:
+          - show interface 
+    register: output
+  - debug:
+      var: output

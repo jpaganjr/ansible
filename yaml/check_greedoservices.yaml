@@ -1,0 +1,24 @@
+---
+- name: Check downloader services
+  hosts: greedo
+  gather_facts: no
+
+  tasks:
+   - name: Populate Serivce Info
+     ansible.builtin.service_facts:
+
+   - name: Check Sonarr is running
+     ansible.builtin.debug:
+       msg: "{{ansible_facts.services['sonarr.service'].state}}"
+   
+   - name: Check Radarr is running
+     ansible.builtin.debug:
+       msg: "{{ansible_facts.services['radarr.service'].state}}"
+
+   - name: Check Sabnzbd is running
+     ansible.builtin.debug:
+       msg: "{{ansible_facts.services['sabnzbd.service'].state}}"
+
+   - name: Check Transmission is running
+     ansible.builtin.debug:
+       msg: "{{ansible_facts.services['transmission-daemon.service'].state}}"

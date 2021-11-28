@@ -1,0 +1,17 @@
+---
+
+- name: Rename cumulus acl policy file name
+  hosts: subspace-dx1
+  gather_facts: false
+
+  tasks:
+  - name: rename acl file dubai
+    command: mv /etc/cumulus/acl/policy.d/40dos_attack_acl.rules /etc/cumulus/acl/policy.d/40ddos.subspace.rules
+
+- name: Rename cumulus acl policy file name
+  hosts: subspace-mob-dam1
+  gather_facts: false
+
+  tasks:
+  - name: rename acl file dam mobily
+    command: mv /etc/cumulus/acl/policy.d/40ddos_policy.rules /etc/cumulus/acl/policy.d/40ddos.subspace.rules

@@ -1,0 +1,28 @@
+---
+- name: network monitoring setup
+  hosts: seaswitches
+  gather_facts: false
+
+  tasks:
+    - name: Copy base files to /usr/local/bin
+      copy:
+        src: /Users/jpagan/Downloads/monitoring/node_exporter
+        dest: /usr/local/bin
+        remote_src: no
+
+    - name: Make node_exporter excecutable
+      file:
+        dest: /usr/local/bin/node_exporter
+        mode: a+x
+
+    - name: Copy node-exporter serivce file
+      copy:
+        src: /Users/jpagan/Downloads/monitoring/node_exporter.service
+        dest: /etc/systemd/system/
+        remote_src: no
+
+    - name: Enable node exporter service
+      systemd:
+        name: node_exporter
+        enabled: yes
+

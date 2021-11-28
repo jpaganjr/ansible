@@ -1,0 +1,361 @@
+---
+- name: stc dam
+  hosts: subspace-dmm-sw1
+  gather_facts: false
+  
+  tasks:
+  - name: copy new daemon and backup the current
+    copy: 
+      src: '{{item}}'
+      dest: /usr/local/bin
+      mode: a+x
+      backup: yes
+      remote_src: yes
+    with_items:
+        - /root/gobgp_new/gobgp
+        - /root/gobgp_new/gobgpd
+    tags:
+    - copy
+    register: print_output
+  - debug: var=print_output
+  
+  - name: restart gobgp daemon
+    systemd:
+      name: gobgpd
+      state: restarted
+    tags:
+    - restart-dam
+    register: print_output
+  - debug: var=print_output
+  
+  - name: reannounce overlays and site local
+    shell: '{{item}}'
+    with_items:
+        - gobgp -p 50053 g r a -ipv4 170.52.6.0/24
+        - gobgp -p 50053 g r a -ipv4 143.131.160.0/24
+        - gobgp -p 50053 g r a -ipv4 143.131.161.0/24
+    tags:
+    - announce-dam
+    register: print_output
+  - debug: var=print_output
+
+  - name: verify gobgp announce stc dmm
+    shell: "gobgp -p 50053 n 84.235.125.208 adj-out"
+    tags:
+    - verify-dam
+    register: print_output
+  - debug: var=print_output
+  
+- name: viva bahrain
+  hosts: subspace-bh
+  gather_facts: false
+  
+  tasks:
+  - name: copy new daemon and backup the current
+    copy: 
+      src: '{{item}}'
+      dest: /usr/local/bin
+      mode: a+x
+      backup: yes
+      remote_src: yes
+    with_items:
+        - /root/gobgp_new/gobgp
+        - /root/gobgp_new/gobgpd
+    tags:
+    - copy    
+    register: print_output
+  - debug: var=print_output
+  
+  - name: restart gobgp daemon
+    systemd:
+      name: gobgpd
+      state: restarted
+    tags:
+    - restart-bah1
+    register: print_output
+  - debug: var=print_output
+  
+  - name: reannounce overlays and site local
+    shell: '{{item}}'
+    with_items:
+        - gobgp -p 50053 g r a -a ipv4 143.131.189.0/24
+    tags:
+    - announce-bah1
+    register: print_output
+  - debug: var=print_output
+
+  - name: verify gobgp announce stc dmm
+    shell: "gobgp -p 50053 n 185.143.126.81 adj-out"
+    tags:
+    - verify-bah1
+    register: print_output
+  - debug: var=print_output
+  
+#- name: mumbai
+#  hosts: cumulux-gpx
+#  gather_facts: false
+#  
+#  tasks:
+#  - name: copy new daemon and backup the current
+#    copy: 
+#      src: '{{item}}'
+#      dest: /usr/local/bin
+#      mode: 0644
+#      backup: yes
+#    with_fileglob:
+#        - /root/gobgp_new/gobgp
+#        - /root/gobgp_new/gobgpd
+#    tags:
+#    - copy
+#    register: print_output
+#  - debug: var=print_output
+#  
+#  - name: restart gobgp daemon
+#    systemd:
+#      name: '{{item}}'
+#      state: restarted
+#    with_items:
+#        - gobgpd
+#        - gobgpd.peering
+#    tags:
+#    - verify
+#    register: print_output
+#  - debug: var=print_output
+#  
+#  - name: reannounce overlays and site local
+#    shell: '{{item}}'
+#    with_items: 
+#        - gobgp g r a -a ipv4 143.131.160.0/24
+#        - gobgp g r a -a ipv4 143.131.161.0/24
+#        - gobgp g r a -a ipv4 170.52.0.0/24
+#        - gobgp g r a -a ipv4 170.52.1.0/24
+#        - gobgp g r a -a ipv4 170.52.7.0/24
+#        - gobgp g r a -a ipv4 2600:370f:1060::/43
+#        - gobgp g r a -a ipv4 2600:370f:2020::/43
+#        - gobgp -p 50059 g r a -a ipv4 143.131.160.0/24
+#        - gobgp -p 50059 g r a -a ipv4 143.131.161.0/24
+#        - gobgp -p 50059 g r a -a ipv4 170.52.0.0/24
+#        - gobgp -p 50059 g r a -a ipv4 170.52.1.0/24
+#        - gobgp -p 50059 g r a -a ipv4 170.52.7.0/24
+#    tags:
+#    - announce
+#    register: print_output
+#  - debug: var=print_output
+#
+#  - name: verify announcements mumbai
+#    shell: '{{item}}'
+#    with_items:
+#        - gobgp n 115.110.234.246 adj-out 
+#        - gobgp n 2001:4528:fff:d5::1 adj-out
+#    tags:
+#    - verify
+#    register: print_output 
+#  - debug: var=print_output
+ 
+- name: fujirrah
+  hosts: subspace-fuj
+  gather_facts: false
+  
+  tasks:
+  - name: copy new daemon and backup the current
+    copy: 
+      src: '{{item}}'
+      dest: /usr/src/gobgp/
+      mode: a+x
+      backup: yes
+      remote_src: yes
+    with_items:
+        - /root/gobgp_new/gobgp
+        - /root/gobgp_new/gobgpd
+    tags:
+    - copy
+    register: print_output
+  - debug: var=print_output
+  
+  - name: copy new daemon and backup the current second path
+    copy: 
+      src: '{{item}}'
+      dest: /usr/local/bin
+      mode: a+x
+      backup: yes
+      remote_src: yes
+    with_items:
+        - /root/gobgp_new/gobgp
+        - /root/gobgp_new/gobgpd
+    tags:
+    - copy
+    register: print_output
+  - debug: var=print_output
+  
+  - name: restart gobgp daemon
+    systemd:
+      name: '{{item}}'
+      state: restarted
+    with_items:
+        - gobgpd.ipt
+        - gobgpd.peering
+    tags:
+    - restart-fuj
+    register: print_output
+  - debug: var=print_output
+  
+  - name: reannounce overlays and site local
+    shell: '{{item}}'
+    with_items:
+        - gobgp g r a -a ipv4 143.131.160.0/24 community 0:6939,0:32590,0:3356
+        - gobgp g r a -a ipv4 143.131.161.0/24 community 0:6939,0:32590,0:3356
+        - gobgp g r a -a ipv4 151.106.166.0/24
+        - gobgp g r a -a ipv4 151.106.167.0/24
+        - gobgp g r a -a ipv4 170.52.0.0/24
+        - gobgp g r a -a ipv4 170.52.1.0/24
+        - gobgp g r a -a ipv4 170.52.2.0/24
+        - gobgp -p 50059 g r a -a ipv4 143.131.160.0/24
+        - gobgp -p 50059 g r a -a ipv4 143.131.161.0/24
+        - gobgp -p 50059 g r a -a ipv4 151.106.166.0/24
+        - gobgp -p 50059 g r a -a ipv4 151.106.167.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.0.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.1.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.2.0/24
+    tags:
+    - announce-fuj
+    register: print_output
+  - debug: var=print_output
+
+  - name: verify announcements fuj
+    shell: '{{item}}'
+    with_items:
+        - gobgp n 195.229.29.149 adj-out 
+        - gobgp -p 50059 n 72.14.198.132 adj-out
+    tags:
+    - verify-fuj
+    register: print_output
+  - debug: var=print_output
+  
+- name: dubai
+  hosts: subspace-dx1
+  gather_facts: false
+  
+  tasks:
+  - name: copy new daemon and backup the current
+    copy: 
+      src:  '{{item}}'
+      dest: /usr/src/gobgp/
+      mode: a+x
+      backup: yes
+      remote_src: yes
+    with_items:
+        - /root/gobgp_new/gobgp
+        - /root/gobgp_new/gobgpd
+    tags:
+    - copy
+    register: print_output
+  - debug: var=print_output
+  
+  - name: copy new daemon and backup the current
+    copy: 
+      src:  '{{item}}'
+      dest: /usr/local/bin
+      mode: a+x
+      backup: yes
+      remote_src: yes
+    with_items:
+        - /root/gobgp_new/gobgp
+        - /root/gobgp_new/gobgpd
+    tags:
+    - copy
+    register: print_output
+  - debug: var=print_output
+  
+  - name: restart gobgp daemon
+    systemd:
+      name: '{{item}}'
+      state: restarted
+    with_items:
+        - gobgpd.ipt
+        - gobgpd.peering
+    tags:
+    - restart-dxb
+    register: print_output
+  - debug: var=print_output
+  
+  - name: reannounce overlays and site local
+    shell: '{{item}}'
+    with_items:
+        - gobgp g r a -a ipv4 143.131.160.0/24
+        - gobgp g r a -a ipv4 143.131.161.0/24
+        - gobgp g r a -a ipv4 151.106.166.0/24
+        - gobgp g r a -a ipv4 151.106.167.0/24
+        - gobgp g r a -a ipv4 170.52.0.0/24
+        - gobgp g r a -a ipv4 170.52.1.0/24
+        - gobgp g r a -a ipv4 170.52.3.0/24
+        - gobgp -p 50059 g r a -a ipv4 143.131.160.0/24
+        - gobgp -p 50059 g r a -a ipv4 143.131.161.0/24
+        - gobgp -p 50059 g r a -a ipv4 151.106.166.0/24
+        - gobgp -p 50059 g r a -a ipv4 151.106.167.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.0.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.1.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.3.0/24
+        - gobgp -p 50059 g r a -a ipv6 2600:370f:1020::/43
+    tags:
+    - announce-dxb
+    register: print_output
+  - debug: var=print_output
+
+  - name: verify announcements dubai
+    shell: '{{item}}'
+    with_items:
+        - gobgp n 80.81.65.37 adj-out 
+        - gobgp -p 50059 n 185.1.5.27 adj-out
+        - gobgp -p 50059 n 2001:7f8:73::224d:0:1 adj-out
+    tags:
+    - verify-dxb
+    register: print_output
+  - debug: var=print_output
+  
+  
+- name: dam mob
+  hosts: subspace-mob-dam1
+  gather_facts: false
+  
+  tasks:
+  - name: copy new daemon and backup the current
+    copy: 
+      src: '{{item}}'
+      dest: /usr/local/bin
+      mode: a+x
+      backup: yes
+      remote_src: yes
+    with_items:
+        - /root/gobgp_new/gobgp
+        - /root/gobgp_new/gobgpd
+    tags:
+    - copy
+    register: print_output
+  - debug: var=print_output
+  
+  - name: restart gobgp daemon
+    systemd:
+      name: gobgpd
+      state: restarted
+    tags:
+    - restart-mob
+    register: print_output
+  - debug: var=print_output
+  
+  - name: reannounce overlays and site local
+    shell: '{{item}}'
+    with_items:
+        - gobgp g r a -a ipv4 143.131.160.0/24
+        - gobgp g r a -a ipv4 143.131.161.0/24
+        - gobgp g r a -a ipv4 170.52.3.0/24
+    tags:
+    - announce-mob
+    register: print_output
+  - debug: var=print_output
+
+  - name: verify announcements dam mob
+    shell: "gobgp n 86.51.21.42 adj-out"
+    tags:
+    - verify-mob
+    register: print_output
+  - debug: var=print_output

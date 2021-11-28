@@ -1,0 +1,63 @@
+GitLab Notes:
+
+set basic config:
+
+git config --global user.name jpaganjr23
+git config --global user.email jesus@pdrtechgurus.comment
+
+Add ssh key to online profile
+
+Make a working directory:
+i.e ---> mkdir -p ~/git/engineering/
+
+cd ~/git/engineering 
+clone the repo: git clone git@gitlab.ftlio.net:engineering/veritas
+
+It will appear as a new directory then change to directory and cehck status:
+cd veritas
+git status
+
+
+Making changes to the repo:
+
+1. create a new local branch:
+git checkout -b feature/add-ssh-key-jpagan ; the part after -b is the name of the branch, we have labels like feature, bugfix, deploy to describe the type of branch we're creating and then some short description after the slash
+git status ; this will show you that you are on the correct branch, you should see: On branch feature/add-ssh-key-jpagan
+
+2. Add, modify changes to files:
+git add ; will add the files that you have made changes to you your LOCAL branch
+
+3. Generate a merge_request
+
+git push --- by default, you'll get something like:   git push --set-upstream origin feature/... 
+             we'll take this and add something to the end to create the MR:
+             git push --set-upstream origin feature/add-ssh-key-jpagan -o merge_request.create
+             you'll get back some out that includes a numerical index for the MR, and we'll use that to create the commit message
+
+4. Create the commit message:
+
+git commit -m '!XXX - add Jesus' public key'; where XXX is the numerical index you got back from the merge_request.create
+                                              make sure the commit message is in single-quotes due to using the ! in the comment
+											  
+Jesus PaganLast Wednesday at 10:34 AM
+remote: William is testing the pre-recieve hook. Hello from gitlab hook-land.
+remote: oldrev: 0000000000000000000000000000000000000000
+remote: newrev: bb5d29d003b7c9cc3f08aff8404973fe819ccc25
+remote: refname: refs/heads/feature/add-ssh-key-jpagan
+remote: span:
+remote: 
+remote: 
+remote: View merge request for feature/add-ssh-key-jpagan:
+remote:   https://gitlab.ftlio.net/engineering/veritas/-/merge_requests/689
+remote: 
+To gitlab.ftlio.net:engineering/veritas
+ * [new branch]        feature/add-ssh-key-jpagan -> feature/add-ssh-key-jpagan
+Branch 'feature/add-ssh-key-jpagan' set up to track remote branch 'feature/add-ssh-key-jpagan' from 'origin'.
+
+After the commit message, you can do: git push to upload the MR to gitlab
+and then you can go to gitlab on your browser to check that your updated file made it to gitlab:
+https://gitlab.ftlio.net/engineering/veritas/-/merge_requests/689
+
+on that page, you'll need to edit the title and the description, here's an example of one someone did recently:
+https://gitlab.ftlio.net/engineering/veritas/-/merge_requests/657
+
