@@ -1,0 +1,78 @@
+- name: Add vlans B78 access Switches
+  hosts: b78access
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: add show P16 vlans to access
+      ios_vlan:
+        vlan_id: 2200
+        name: P16_PRE_PRO
+        state: active
+      register: print_output 
+    - debug: var=print_output
+        
+    - name: add show P16 vlans to access 
+      ios_vlan: 
+        name: P16_PRO
+        vlan_id: 2201
+        state: active
+      register: print_output 
+    - debug: var=print_output
+        
+    - name: add show P16 vlans to access
+      ios_vlan:
+        name: P16_ACC
+        vlan_id: 2202
+        state: active
+      register: print_output
+    - debug: var=print_output
+        
+    - name: add show P16 vlans to access
+      ios_vlan:
+        name: P16_WIF
+        vlan_id: 2203
+        state: active
+      register: print_output
+       
+    - debug: var=print_output
+        
+    - name: add show P16 vlans to access
+      ios_vlan:
+        name: P16_ART
+        vlan_id: 2204
+        state: active
+      register: print_output 
+    - debug: var=print_output
+        
+    - name: add show P16 vlans to access
+      ios_vlan:
+        name: P16_CON
+        vlan_id: 2205
+        state: active
+      register: print_output
+    - debug: var=print_output
+        
+    - name: add show P16 vlans to access
+      ios_vlan:
+        name: P16_PRI
+        vlan_id: 2206
+        state: active
+      register: print_output
+    - debug: var=print_output
+        
+    - name: add show P16 vlans to access
+      ios_vlan:
+        name: P16_VFX
+        vlan_id: 2207
+        state: active
+      register: print_output
+    - debug: var=print_output
+        
+    - name: add show P16 vlans to access
+      ios_vlan:
+        name: P16_EDI
+        vlan_id: 2208
+        state: active
+      register: print_output
+    - debug: var=print_output

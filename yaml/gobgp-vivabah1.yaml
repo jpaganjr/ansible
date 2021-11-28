@@ -1,0 +1,46 @@
+---
+
+- name: viva bahrain
+  hosts: subspace-bh
+  gather_facts: false
+  
+  tasks:
+  - name: copy new daemon and backup the current
+    copy: 
+      src: '{{item}}'
+      dest: /usr/local/bin
+      mode: a+x
+      backup: yes
+      remote_src: yes
+    with_items:
+        - /root/gobgp_new/gobgp
+        - /root/gobgp_new/gobgpd
+    tags:
+    - copy    
+    register: print_output
+  - debug: var=print_output
+  
+  - name: restart gobgp daemon
+    systemd:
+      name: gobgpd
+      state: restarted
+    tags:
+    - restart
+    register: print_output
+  - debug: var=print_output
+  
+  - name: reannounce overlays and site local
+    shell: '{{item}}'
+    with_items:
+        - gobgp -p 50053 g r a -a ipv4 143.131.189.0/24
+    tags:
+    - announce
+    register: print_output
+  - debug: var=print_output
+
+  - name: verify gobgp announce stc dmm
+    shell: "gobgp -p 50053 n 185.143.126.81 adj-out"
+    tags:
+    - verify
+    register: print_output
+  - debug: var=print_output

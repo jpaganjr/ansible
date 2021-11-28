@@ -1,0 +1,29 @@
+---
+- name: Add rules to iptables
+  hosts: par1-edge01,par1-core01,par1-core02,lon1-edge01,lon1-core01,lon1-core02
+  gather_facts: false
+  
+  tasks:
+  - name: Add iptables rules for node_exporter and ethtool_exporter
+    blockinfile:
+      path: /etc/cumulus/acl/policy.d/40ddos.subspace.rules
+      block: |
+        # lockdown node_exporter
+        -A INPUT -p tcp --dport 9100 -s 143.131.160.0/19 -j ACCEPT
+        -A INPUT -p tcp --dport 9100 -s 158.247.96.0/19 -j ACCEPT
+        -A INPUT -p tcp --dport 9100 -s 151.106.160.0/19 -j ACCEPT
+        -A INPUT -p tcp --dport 9100 -s 139.177.96.0/20 -j ACCEPT
+        -A INPUT -p tcp --dport 9100 -s 170.52.0.0/21 -j ACCEPT
+        -A INPUT -p tcp --dport 9100 -j DROP
+
+        # lockdown ethtool exporter
+        -A INPUT -p tcp --dport 9200 -s 143.131.160.0/19 -j ACCEPT
+        -A INPUT -p tcp --dport 9200 -s 158.247.96.0/19 -j ACCEPT
+        -A INPUT -p tcp --dport 9200 -s 151.106.160.0/19 -j ACCEPT
+        -A INPUT -p tcp --dport 9200 -s 139.177.96.0/20 -j ACCEPT
+        -A INPUT -p tcp --dport 9200 -s 170.52.0.0/21 -j ACCEPT
+        -A INPUT -p tcp --dport 9200 -j DROP
+
+  - name: "{{ ansible_host }}: Install iptables rules"
+    shell: "/usr/cumulus/bin/cl-acltool -i"
+

@@ -1,0 +1,76 @@
+---
+- name: network monitoring setup
+  hosts: par1-edge01,lon1-edge01
+  gather_facts: false
+
+  tasks:
+    - name: Copy base files to /opt
+      copy:
+        src: /Users/jpagan/Downloads/monitoring/node_exporter
+        dest: /usr/local/bin
+        remote_src: no
+        mode: a+x
+
+    - name: Copy ethtool_exporter to /usr/local/sbin and make executable
+      copy:
+        src: /Users/jpagan/Downloads/monitoring/ethtool-exporter.py
+        dest: /usr/local/sbin
+        mode: a+x
+        remote_src: no
+
+#    - name: Copy ping-exporter service files to systemd
+#      copy: 
+#        src: '{{item}}'
+#        dest: /etc/systemd/system/
+#        mode: a+x
+#        remote_src: yes
+#      with_fileglob:
+#         - /opt/monitoring/ping.service
+
+    - name: Copy serivce files
+      copy:
+        src: '{{item}}'
+        dest: /etc/systemd/system/
+        remote_src: no
+      with_items:
+          - /Users/jpagan/Downloads/monitoring/node_exporter.service
+          - /Users/jpagan/Downloads/monitoring/ethtool-exporter.service
+
+    - name: Enable node exporter service
+      systemd:
+        name: node_exporter
+        enabled: yes
+
+    - name: Enable ethtool exporter service
+      systemd:
+        name: ethtool-exporter
+        enabled: yes
+
+#    - name: Enable ping exporter service
+#      systemd:
+#        name: '{{item}}'
+#        enabled: yes
+#      with_items:
+#          - 'ping-exporter-1'
+#          - 'ping-exporter-2'
+#          - 'ping-exporter-3'
+#          - 'ping-exporter-4'
+#          - 'ping-exporter-5'
+#          - 'ping-exporter-6'
+
+#    - name: Start Node Exporter
+#      systemd:
+#        name: node_exporter
+#        state: started
+
+#    - name: Start ping exporter service
+#      systemd:
+#        name: '{{item}}'
+#        state: started
+#      with_items:
+#          - 'ping-exporter-1'
+#          - 'ping-exporter-2'
+#          - 'ping-exporter-3'
+#          - 'ping-exporter-4'
+#          - 'ping-exporter-5'
+#          - 'ping-exporter-6'

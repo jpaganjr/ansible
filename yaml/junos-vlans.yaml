@@ -1,0 +1,34 @@
+---
+- name: load configure lines into device
+  hosts: b78-mdf-agg-1
+  gather_facts: no
+  connection: local
+  
+  tasks:
+    - name: Add p14/16 vlans
+      junos_config:
+        lines:
+          - set vlans P16_ACC vlan-id 2202
+          - set vlans P16_ART vlan-id 2204
+          - set vlans P16_CON vlan-id 2205
+          - set vlans P16_DI vlan-id 2211
+          - set vlans P16_DLS vlan-id 2212
+          - set vlans P16_EDI vlan-id 2208
+          - set vlans P16_MOC vlan-id 2209
+          - set vlans P16_PRE_PRO vlan-id 2200
+          - set vlans P16_PRE_VIS vlan-id 2213
+          - set vlans P16_PRI vlan-id 2206
+          - set vlans P16_PRO vlan-id 2201
+          - set vlans P16_SHO_INT vlan-id 2210
+          - set vlans P16_VFX vlan-id 2207
+          - set vlans P16_WIF vlan-id 2203
+          - set vlans RED_P16_ISIS vlan-id 2228
+          - set vlans RED_P16_SEC vlan-id 2227
+        comment: add p14/p16 vlans
+        
+      register: print_output
+     
+    - debug: var=print_output
+    
+
+

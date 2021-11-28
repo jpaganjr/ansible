@@ -1,0 +1,19 @@
+---
+- name: get facts
+  hosts: DCMGT
+  roles:
+    - Juniper.junos
+  gather_facts: no
+  connection: local
+  
+  tasks:
+    - name: sh ver
+      juniper_junos_facts:
+        host: "{{ inventory_hostname }}"
+     
+    - name: Print Version
+      debug:
+        var: junos.version
+    
+
+

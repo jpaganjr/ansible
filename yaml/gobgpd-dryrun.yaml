@@ -1,0 +1,126 @@
+---
+
+- name: stc dam
+  hosts: subspace-dmm-sw1
+  gather_facts: false
+
+  tasks:
+  - name: gobgp check config file stc dmm
+    shell: "/root/gobgp_new/gobgpd -d -f /etc/gobgp/subspace-dmm-ipt.conf"
+    register: print_output
+  - debug: var=print_output
+  
+- name: viva bh
+  hosts: subspace-bh
+  gather_facts: false
+
+  tasks:
+  - name: gobgp check config viva bh
+    shell: "/root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.viva-bh.ipt.conf"
+    register: print_output
+  - debug: var=print_output
+  
+- name: mumbai
+  hosts: cumulux-gpx
+  gather_facts: false
+
+  tasks:
+  - name: check gobgp config file gpx
+    shell: "{{ item }}"
+    with_items:
+      - /root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.gpx.ipt.conf
+      - /root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.gpx.peering.conf
+    register: print_output
+  - debug: var=print_output
+ 
+- name: fuj
+  hosts: subspace-fuj
+  gather_facts: false
+
+  tasks:
+  - name: check gobgp config file fuj
+    shell: "{{ item }}"
+    with_items:
+      - /root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.fjr.ipt.conf 
+      - /root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.fjr.shix.conf
+    register: print_output
+  - debug: var=print_output
+  
+- name: dam mobily
+  hosts: subspace-mob-dam1
+  gather_facts: false
+
+  tasks:
+  - name: check gobgp config file dam mob
+    shell: "/root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.mobily.conf"
+    register: print_output
+  - debug: var=print_output
+  
+- name: dubai
+  hosts: subspace-dx1
+  gather_facts: false
+
+  tasks:
+  - name: check gobgp config file dbx1
+    shell: "{{ item }}"
+    with_items:
+      - /root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.dx1.ipt.conf
+      - /root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.dx1.uaeix.conf
+    register: print_output
+  - debug: var=print_output
+
+- name: viva kw
+  hosts: subspace-vivakw-kwi-sw1
+  gather_facts: false
+
+  tasks:
+  - name: check gobgp config file viva kw
+    shell: "{{ item }}"
+    with_items:
+      - /root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace-viva-kw.conf
+      - /root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace-peer2.conf
+    register: print_output
+  - debug: var=print_output
+
+- name: zajil kw
+  hosts: subspace-kwi-zajil-sw1
+  gather_facts: false
+
+  tasks:
+  - name: check gobgp config file zajil kw
+    shell: "/root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace-zajil-kw-ipt.conf"
+    register: print_output
+  - debug: var=print_output
+
+- name: oma mct
+  hosts: subspace-omantelom-mct-sw1
+  gather_facts: false
+
+  tasks:
+  - name: check gobgp config file oma mct
+    shell: "/root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.ipt.conf"
+    register: print_output
+  - debug: var=print_output
+
+- name: ooredoo kw
+  hosts: subspace-ooredoo-kw-kwi-sw1
+  gather_facts: false
+
+  tasks:
+  - name: check gobgp config file ooredoo
+    shell: "/root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.okw-ipt.conf"
+    register: print_output
+  - debug: var=print_output
+
+- name: stc jed
+  hosts: subspace-stc-jed-sw1
+  gather_facts: false
+
+  tasks:
+  - name: check gobgp config file stc jed
+    shell: "{{ item }}"
+    with_items:
+      - /root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.jeddah.ipt.conf
+      - /root/gobgp_new/gobgpd -d -f /etc/gobgpd/subspace.jeddah.peering.conf
+    register: print_output
+  - debug: var=print_output

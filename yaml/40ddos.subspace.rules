@@ -1,0 +1,98 @@
+[iptables]
+-A FORWARD -p udp -m multiport --sports 0,17,19,53,69,111,123,137,161,389,520,1194,1434,1900,11211 -d 170.52.0.0/23 -j DROP
+-A FORWARD -p udp -m multiport --sports 0,17,19,53,69,111,123,137,161,389,520,1194,1434,1900,11211 -d 143.131.160.0/23 -j DROP
+-A FORWARD -p udp -m multiport --sports 0,17,19,53,69,111,123,137,161,389,520,1194,1434,1900,11211 -d 143.131.174.0/23 -j DROP
+-A FORWARD -p udp -m multiport --sports 0,17,19,53,69,111,123,137,161,389,520,1194,1434,1900,11211 -d 143.131.176.0/22 -j DROP
+-A FORWARD -p udp -m multiport --sports 0,17,19,53,69,111,123,137,161,389,520,1194,1434,1900,11211 -d 143.131.180.0/23 -j DROP
+-A FORWARD -p udp -m multiport --sports 0,17,19,53,69,111,123,137,161,389,520,1194,1434,1900,11211 -d 139.177.108.0/23 -j DROP
+-A FORWARD -p udp -m multiport --sports 0,17,19,53,69,111,123,137,161,389,520,1194,1434,1900,11211 -d 158.247.120.0/23 -j DROP
+
+-A FORWARD -p tcp --dport 53 -s 143.131.160.0/19 -j ACCEPT
+-A FORWARD -p udp --dport 53 -s 143.131.160.0/19 -j ACCEPT
+-A FORWARD -p tcp --dport 53 -s 158.247.96.0/19 -j ACCEPT
+-A FORWARD -p udp --dport 53 -s 158.247.96.0/19 -j ACCEPT
+-A FORWARD -p tcp --dport 53 -s 170.52.0.0/21 -j ACCEPT
+-A FORWARD -p udp --dport 53 -s 170.52.0.0/21 -j ACCEPT
+-A FORWARD -p tcp --dport 53 -s 139.177.96.0/20 -j ACCEPT
+-A FORWARD -p udp --dport 53 -s 139.177.96.0/20 -j ACCEPT
+-A FORWARD -p tcp --dport 53 -s 151.106.160.0/19 -j ACCEPT
+-A FORWARD -p udp --dport 53 -s 151.106.160.0/19 -j ACCEPT
+
+-A FORWARD -p udp --dport 53 -j DROP
+-A FORWARD -p tcp --dport 53 -j DROP
+
+#allow ssh to gitlab ip
+-A FORWARD -p tcp --dport 22 -d 35.185.202.111/32 -j ACCEPT
+
+#drop standard ssh port
+-A FORWARD -p tcp --dport 22 -j DROP
+
+-A FORWARD -p icmp -d 170.52.0.0/23 -j DROP
+-A FORWARD -p icmp -d 143.131.160.0/23 -j DROP
+-A FORWARD -p icmp -d 143.131.174.0/23 -j DROP
+-A FORWARD -p icmp -d 143.131.176.0/22 -j DROP
+-A FORWARD -p icmp -d 143.131.180.0/23 -j DROP
+-A FORWARD -p icmp -d 170.52.0.0/24  -j DROP
+-A FORWARD -p icmp -d 158.247.120.0/24  -j DROP
+
+# subspace public space
+-A INPUT -p tcp --dport 222 -s 158.247.96.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 222 -s 170.52.0.0/21 -j ACCEPT
+-A INPUT -p tcp --dport 222 -s 143.131.160.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 222 -s 139.177.96.0/20 -j ACCEPT
+-A INPUT -p tcp --dport 222 -s 151.106.160.0/19 -j ACCEPT
+
+# lockdown node_exporter
+-A INPUT -p tcp --dport 9100 -s 143.131.160.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 9100 -s 158.247.96.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 9100 -s 170.52.0.0/21 -j ACCEPT
+-A INPUT -p tcp --dport 9100 -s 139.177.96.0/20 -j ACCEPT
+-A INPUT -p tcp --dport 9100 -s 151.106.160.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 9100 -j DROP
+
+# lockdown gobgp_exporter
+-A INPUT -p tcp --dport 9101 -s 143.131.160.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 9101 -s 158.247.96.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 9101 -s 170.52.0.0/21 -j ACCEPT
+-A INPUT -p tcp --dport 9101 -s 139.177.96.0/20 -j ACCEPT
+-A INPUT -p tcp --dport 9101 -s 151.106.160.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 9101 -j DROP
+
+# lockdown gobgp_exporter
+-A INPUT -p tcp --dport 9102 -s 143.131.160.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 9102 -s 158.247.96.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 9102 -s 170.52.0.0/21 -j ACCEPT
+-A INPUT -p tcp --dport 9102 -s 139.177.96.0/20 -j ACCEPT
+-A INPUT -p tcp --dport 9102 -s 151.106.160.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 9102 -j DROP
+
+# subspace private space
+-A INPUT -p tcp --dport 222 -s 10.0.0.0/8 -j ACCEPT
+
+# jump box
+-A INPUT -p tcp --dport 222 -s 54.177.33.193/32 -j ACCEPT
+
+# pdavis break glass
+-A INPUT -p tcp --dport 222 -s 23.242.163.10/32 -j ACCEPT
+-A INPUT -p tcp --dport 222 -s 75.82.188.192/32 -j ACCEPT
+
+# wking break glass
+-A INPUT -p tcp --dport 222 -s 72.34.127.87/32 -j ACCEPT
+
+# jpagan break glass
+-A INPUT -p tcp --dport 222 -s 172.118.142.169/32 -j ACCEPT
+
+# msoho break glass
+-A INPUT -p tcp --dport 222 -s 23.240.136.230/32 -j ACCEPT
+
+# agreusel break glass
+-A INPUT -p tcp --dport 222 -s 107.185.44.132/32 -j ACCEPT
+
+# klu break glass
+-A INPUT -p tcp --dport 222 -s 23.152.128.115/32 -j ACCEPT
+
+# ptopping break glass
+-A INPUT -p tcp --dport 222 -s 76.95.61.188/32 -j ACCEPT
+
+#drop other port 222
+-A INPUT -p tcp --dport 222 -j DROP

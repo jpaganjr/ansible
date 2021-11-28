@@ -1,0 +1,26 @@
+---
+- name: Load Balancing Config Info
+  hosts: DCAGGS, DCTOR0
+  roles:
+    - Juniper.junos      
+  connection: local
+  gather_facts: no
+
+  tasks: 
+    - name: get load balance info
+      juniper_junos_config:
+        retrieve: 'committed' 
+        format: 'set'  
+        filter: "<configuration><routing-options/><forwarding-options/></configuration>"
+      register: response
+
+    - name: define print variable
+      debug: 
+        var: response.config_lines
+    - name:
+       copy: 
+        content: "{{ response.config_lines }}" 
+        dest: "./{{ inventory_hostname }}-lb.txt"
+       delegate_to: localhost
+
+

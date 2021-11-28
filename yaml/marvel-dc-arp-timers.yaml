@@ -1,0 +1,22 @@
+---
+- name: update arp timers
+  hosts: DCAGGS, DCCORE, DCTOR0, DCTOR1
+  roles:
+    - Juniper.junos      
+  connection: local
+  gather_facts: no
+
+  tasks: 
+    - name: set arp timers to default
+      juniper_junos_config:
+        config_mode: 'private'      
+        load: 'set'
+        lines: 
+         - "delete system arp"
+
+        comment: remove arp timer
+      register: response
+
+    - name: Print Response
+      debug:
+        var: response      

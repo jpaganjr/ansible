@@ -1,0 +1,81 @@
+---
+- name: dubai
+  hosts: subspace-dx1
+  gather_facts: false
+  
+  tasks:
+  - name: copy new daemon and backup the current
+    copy: 
+      src:  '{{item}}'
+      dest: /usr/src/gobgp/
+      mode: a+x
+      backup: yes
+      remote_src: yes
+    with_items:
+        - /root/gobgp_new/gobgp
+        - /root/gobgp_new/gobgpd
+    tags:
+    - copy
+    register: print_output
+  - debug: var=print_output
+  
+  - name: copy new daemon and backup the current
+    copy: 
+      src:  '{{item}}'
+      dest: /usr/local/bin
+      mode: a+x
+      backup: yes
+      remote_src: yes
+    with_items:
+        - /root/gobgp_new/gobgp
+        - /root/gobgp_new/gobgpd
+    tags:
+    - copy
+    register: print_output
+  - debug: var=print_output
+  
+  - name: restart gobgp daemon
+    systemd:
+      name: '{{item}}'
+      state: restarted
+    with_items:
+        - gobgpd.ipt
+        - gobgpd.peering
+    tags:
+    - restart
+    register: print_output
+  - debug: var=print_output
+  
+  - name: reannounce overlays and site local
+    shell: '{{item}}'
+    with_items:
+        - gobgp g r a -a ipv4 143.131.160.0/24
+        - gobgp g r a -a ipv4 143.131.161.0/24
+        - gobgp g r a -a ipv4 151.106.166.0/24
+        - gobgp g r a -a ipv4 151.106.167.0/24
+        - gobgp g r a -a ipv4 170.52.0.0/24
+        - gobgp g r a -a ipv4 170.52.1.0/24
+        - gobgp g r a -a ipv4 170.52.3.0/24
+        - gobgp -p 50059 g r a -a ipv4 143.131.160.0/24
+        - gobgp -p 50059 g r a -a ipv4 143.131.161.0/24
+        - gobgp -p 50059 g r a -a ipv4 151.106.166.0/24
+        - gobgp -p 50059 g r a -a ipv4 151.106.167.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.0.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.1.0/24
+        - gobgp -p 50059 g r a -a ipv4 170.52.3.0/24
+        - gobgp -p 50059 g r a -a ipv6 2600:370f:1020::/43
+    tags:
+    - announce
+    register: print_output
+  - debug: var=print_output
+
+  - name: verify announcements dubai
+    shell: '{{item}}'
+    with_items:
+        - gobgp n 80.81.65.37 adj-out 
+        - gobgp -p 50059 n 185.1.5.27 adj-out
+        - gobgp -p 50059 n 2001:7f8:73::224d:0:1 adj-out
+    tags:
+    - verify
+    register: print_output
+  - debug: var=print_output

@@ -1,0 +1,18 @@
+---
+- name: add null routes
+  hosts: subspace-dx1-sw1
+  gather_facts: false
+  connection: local
+  
+  tasks:
+    - name: add null routes
+      nclu:
+        commands:
+            - add routing route 162.159.2.0/24 null
+            - add routing route 162.158.88.0/24 null
+            - add routing route 162.158.183.0/24 null
+            - add routing route 141.101.96.0/24 null
+            - add routing route 141.101.105.0/24 null
+            - add routing route 141.101.69.0/24 null
+        commit: true
+

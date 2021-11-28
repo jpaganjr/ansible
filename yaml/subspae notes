@@ -1,0 +1,133 @@
+git config --global user.name "Jesus Pagan"
+git config --global user.email "jpagan@subspace.com"
+
+mkdir -p ~/git/engineering/
+
+cd ~/git/engineering 
+
+clone the repo: git clone git@gitlab.ftlio.net:engineering/veritas
+
+cd veritas
+git status
+
+git checkout -b feature/add-ssh-key-jpagan ; the part after -b is the name of the branch, we have labels like feature, bugfix, deploy to describe the type of branch we're creating and then some short description after the slash
+
+if creating the branch works, then when you do git status, you should see: On branch feature/add-ssh-key-jpagan
+
+before we commit this file, we need to generate the Merge Request which we refer to as MRs:
+git push
+by default, you'll get something like:
+   git push --set-upstream origin feature/...
+we'll take this and add something to the end to create the MR:
+   git push --set-upstream origin feature/add-ssh-key-jpagan -o merge_request.create
+you'll get back some out that includes a numerical index for the MR, and we'll use that to create the commit message
+git add files/authorized_keys
+git commit -m '!XXX - add Jesus' public key'
+ where XXX is the numerical index you got back from the merge_request.create
+make sure the commit message is in single-quotes due to using the ! in the comment
+Jesus PaganLast Wednesday at 10:34 AM
+remote: William is testing the pre-recieve hook. Hello from gitlab hook-land.
+remote: oldrev: 0000000000000000000000000000000000000000
+remote: newrev: bb5d29d003b7c9cc3f08aff8404973fe819ccc25
+remote: refname: refs/heads/feature/add-ssh-key-jpagan
+remote: span:
+remote: 
+remote: 
+remote: View merge request for feature/add-ssh-key-jpagan:
+remote:   https://gitlab.ftlio.net/engineering/veritas/-/merge_requests/689
+remote: 
+To gitlab.ftlio.net:engineering/veritas
+ * [new branch]        feature/add-ssh-key-jpagan -> feature/add-ssh-key-jpagan
+Branch 'feature/add-ssh-key-jpagan' set up to track remote branch 'feature/add-ssh-key-jpagan' from 'origin'.
+GitLab
+Sign in
+GitLab Enterprise Edition
+
+kyingLast Wednesday at 10:35 AM
+yup, so the numerical index here is 689
+so your commit message will be like: git commit -m '!689 - ...'
+Jesus PaganLast Wednesday at 10:35 AM
+ahh i see ok
+kyingLast Wednesday at 10:35 AM
+this is the pattern you'll be using when creating MRs going forward
+Jesus PaganLast Wednesday at 10:36 AM
+ok sounds good so can i do this now or do i need to wait for an apporval?
+kyingLast Wednesday at 10:36 AM
+after the commit message, you can do: git push to upload the MR to gitlab
+and then you can go to gitlab on your browser to check that your updated file made it to gitlab:
+https://gitlab.ftlio.net/engineering/veritas/-/merge_requests/689
+Jesus PaganLast Wednesday at 10:36 AM
+o
+ok
+kying
+Last Wednesday at 10:38 AM
+on that page, you'll need to edit the title and the description, here's an example of one someone did recently:
+https://gitlab.ftlio.net/engineering/veritas/-/merge_requests/657
+GitLab
+Sign in
+GitLab Enterprise Edition
+
+Jesus PaganLast Wednesday at 10:47 AM
+ok all done
+kyingLast Wednesday at 10:55 AM
+when you did a git push, did you see any error?
+Jesus PaganLast Wednesday at 10:55 AM
+said everything up to date
+jpagan@Jesuss-MacBook-Pro files % git push
+Everything up-to-date
+kyingLast Wednesday at 10:58 AM
+reason why I ask is when you go to gitlab, it doesnt see any updated files
+what do you see when you do git status?
+Jesus PaganLast Wednesday at 11:00 AM
+looks like i missed a step
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   authorized_keys
+jpagan@Jesuss-MacBook-Pro files % git status
+On branch feature/add-ssh-key-jpagan
+Your branch is up to date with 'origin/feature/add-ssh-key-jpagan'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   authorized_keys
+kyingLast Wednesday at 11:02 AM
+ok, so you'll do the git add authorized_keys, then that commit message
+Jesus PaganLast Wednesday at 11:05 AM
+so i did the git add and i see that change to be commited now
+Your branch is up to date with 'origin/feature/add-ssh-key-jpagan'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   authorized_keys
+kyingLast Wednesday at 11:05 AM
+had you already done the git commit -m ...?
+if so, then you can do the git push
+Jesus PaganLast Wednesday at 11:06 AM
+ok
+ok all done
+kyingLast Wednesday at 11:09 AM
+the last thing you'll need to edit is change the title: WIP: Feature/add ssh key jpagan
+Jesus PaganLast Wednesday at 11:10 AM
+ok done
+kyingLast Wednesday at 11:12 AM
+ok, I approved it; we just need a process reviewer and then we can merge it
+Jesus PaganLast Wednesday at 11:12 AM
+sounds good, thanks for your help with this. Much appreciated
+kyingLast Wednesday at 11:26 AM
+alright, got our process review so now you can merge it via the button
+ah, the reviewer merged it, so now if you go back to your terminal, if you git checkout master; then git pull, you'll see your updated file get downloaded
+
+ansible  switches -c local -m shell -a ' echo {{ inventory_hostname }} {{ ansible_host }} executable=/bin/bash  ' | fgrep -v CHANGED
+
+here's instructions for C3PO Stream length monitoring:
+
+On the MENA Prod kube context, do a port forward:
+kubectl port-forward svc/cyclops-grafana -n cyclops 3000:80
+
+Then visit grafana here: http://localhost:3000/d/ZvmpWT3Zk/c3po
+
+Stream lengths >1-2M are where we'd start to really consider cleaning and flipping

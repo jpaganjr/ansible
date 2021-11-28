@@ -1,0 +1,72 @@
+---
+- name: network monitoring setup
+  hosts: menaswitches
+  gather_facts: false
+
+  tasks:
+    - name: Copy base files to /opt
+      copy:
+        src: /Users/jpagan/Downloads/monitoring
+        dest: /opt
+        remote_src: no
+
+    - name: Make node_exporter excecutable
+      file:
+        dest: /opt/monitoring/node_exporter
+        mode: a+x
+
+    - name: Copy fping to /usr/local/sbin and make executable
+      copy:
+        src: /opt/monitoring/fping
+        dest: /usr/local/sbin
+        mode: a+x
+        remote_src: yes
+
+    - name: Copy gobgp-exporter to /usr/local/sbin and make executable
+      copy:
+        src: /opt/monitoring/gobgp-exporter
+        dest: /usr/local/sbin
+        mode: a+x
+        remote_src: yes
+
+    - name: Copy ping-exporter service files to systemd
+      copy: 
+        src: '{{item}}'
+        dest: /etc/systemd/system/
+#        mode: a+x
+        remote_src: yes
+      with_items:
+         - /opt/monitoring/ping-exporter-1.service
+         - /opt/monitoring/ping-exporter-2.service
+
+    - name: Copy node-exporter serivce file
+      copy:
+        src: /opt/monitoring/node_exporter.service
+        dest: /etc/systemd/system/
+        remote_src: yes
+
+    - name: Enable node exporter service
+      systemd:
+        name: node_exporter
+        enabled: yes
+
+    - name: Enable ping exporter service
+      systemd:
+        name: '{{item}}'
+        enabled: yes
+      with_items:
+          - 'ping-exporter-1'
+          - 'ping-exporter-2'
+
+#    - name: Start Node Exporter
+#      systemd:
+#        name: node_exporter
+#        state: started
+
+#    - name: Start ping exporter service
+#      systemd:
+#        name: '{{item}}'
+#        state: started
+#      with_items:
+#          - 'ping-exporter-1'
+#          - 'ping-exporter-2'

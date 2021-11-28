@@ -1,0 +1,32 @@
+---
+- name: update hsflowd config for flow collection in taffic sentinel
+  hosts: lhr-ld5-sw1
+  gather_facts: false
+  connection: local
+  environment:
+    PATH: /bin:/usr/lib
+  tasks:
+    - name: copy and backup new hsflowd config file
+      copy: 
+        src: /Users/jpagan/yaml/hsflowd.conf
+        dest: /etc/hsflowd.conf
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+      register: print_output
+    - debug: var=print_output
+
+    - name: enable hsflowd daemon
+      systemd:
+        name: hsflowd
+        enabled: yes
+      register: print_output
+    - debug: var=print_output
+
+    - name: start hsflowd daemon
+      systemd:
+        name: hsflowd
+        state: started
+      register: print_output
+    - debug: var=print_output

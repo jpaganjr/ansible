@@ -1,0 +1,51 @@
+vim /etc/systemd/system/node_exporter.service
+
+--web.listen-address=143.131.164.1:9100
+
+vim /etc/cumulus/acl/policy.d/40ddos.subspace.rules
+
+# lockdown node_exporter
+-A INPUT -p tcp --dport 9100 -s 143.131.164.46/32 -j ACCEPT
+-A INPUT -p tcp --dport 9100 -j DROP
+
+#lockdown ping_exporter
+-A INPUT -p tcp --dport 8085 -s 143.131.164.46/32 -j ACCEPT
+-A INPUT -p tcp --dport 8086 -s 143.131.164.46/32 -j ACCEPT
+-A INPUT -p tcp --dport 8087 -s 143.131.164.46/32 -j ACCEPT
+-A INPUT -p tcp --dport 8088 -s 143.131.164.46/32 -j ACCEPT
+-A INPUT -p tcp --dport 8089 -s 143.131.164.46/32 -j ACCEPT
+-A INPUT -p tcp --dport 8090 -s 143.131.164.46/32 -j ACCEPT
+-A INPUT -p tcp --dport 8085 -j DROP
+-A INPUT -p tcp --dport 8086 -j DROP
+-A INPUT -p tcp --dport 8087 -j DROP
+-A INPUT -p tcp --dport 8088 -j DROP
+-A INPUT -p tcp --dport 8089 -j DROP
+-A INPUT -p tcp --dport 8090 -j DROP
+
+
+ExecStart=/usr/local/sbin/gobgp-exporter --web.listen-address=143.131.171.1:9101 --gobgp.poll-interval 30 --gobgp.address 127.0.0.1:50053
+
+ExecStart=/usr/local/sbin/gobgp-exporter --web.listen-address=143.131.185.1:9102 --gobgp.poll-interval 30 --gobgp.address 127.0.0.1:50059
+
+
+vim /etc/systemd/system/node_exporter.service
+
+--web.listen-address=143.131.184.9:9100
+
+vim /etc/cumulus/acl/policy.d/40ddos.subspace.rules
+
+# lockdown node_exporter
+-A INPUT -p tcp --dport 9100 -s 143.131.160.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 9100 -s 158.247.96.0/19 -j ACCEPT
+-A INPUT -p tcp --dport 9100 -j DROP
+
+# lockdown gobgp_exporter
+-A INPUT -p tcp --dport 9101 -s 143.131.171.46/32 -j ACCEPT
+-A INPUT -p tcp --dport 9101 -j DROP
+
+
+#lockdown ping_exporter
+-A INPUT -p tcp --dport 8085 -s 143.131.185.46/32 -j ACCEPT
+-A INPUT -p tcp --dport 8086 -s 143.131.185.46/32 -j ACCEPT
+-A INPUT -p tcp --dport 8085 -j DROP
+-A INPUT -p tcp --dport 8086 -j DROP

@@ -1,0 +1,13 @@
+---
+- name: check monitoring
+  hosts: menaswitches
+  gather_facts: false
+
+  tasks:
+   - name: Check service status
+     service_facts:
+
+   - name: try and get node-exporter service status
+     fail:
+       msg: Node Exporter is not installed
+     when: ansible_facts.services["node_exporter.service"] is not defined

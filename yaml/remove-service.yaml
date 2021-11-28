@@ -1,0 +1,39 @@
+---
+- name: remove ping exporter
+  hosts: euswitches
+  gather_facts: false
+
+  tasks:
+   - name: Stop ping exporter service
+     systemd:
+        name: '{{item}}'
+        state: stopped
+     with_items:
+       - 'ping_exporter'
+       - 'ping-exporter-1'
+       - 'ping-exporter-2'
+       - 'ping-exporter-3'
+       - 'ping-exporter-4'
+       - 'ping-exporter-5'
+       - 'ping-exporter-6'
+   
+   
+   - name: Disable ping exporter service
+     systemd:
+        name: '{{item}}'
+        enabled: no
+     with_items:
+        - 'ping_exporter'
+        - 'ping-exporter-1'
+        - 'ping-exporter-2'
+        - 'ping-exporter-3'
+        - 'ping-exporter-4'
+        - 'ping-exporter-5'
+        - 'ping-exporter-6'
+   
+#   - name: Copy ping-exporter service files to systemd
+#     file: 
+#       dest: /etc/systemd/system/'{{item}}'
+#       remote_src: yes
+#     with_fileglob:
+#       - /opt/monitoring/ping-exporter-*.service

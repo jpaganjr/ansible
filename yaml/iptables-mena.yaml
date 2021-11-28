@@ -1,0 +1,60 @@
+---
+- name: Add rules to iptables jed-sw1
+  hosts: subspace-stc-jed-sw1
+  gather_facts: false
+ 
+  tasks:
+  - name: Add iptables rules for ddos jed
+    blockinfile:
+      path: /etc/cumulus/acl/policy.d/40ddos_acl.rules
+      block: |
+        # ddos prevention bts event
+        -A INPUT -p tcp --dport 9100 -j DROP
+
+  - name: Install iptables rules
+    shell: "/usr/cumulus/bin/cl-acltool -i"
+
+- name: Add rules to iptables bah
+  hosts: subspace-bh
+  gather_facts: false
+
+  tasks:
+  - name: Add iptables rules for ddos bah
+    blockinfile:
+      path: /etc/cumulus/acl/policy.d/50_nclu_acl.rules
+      block: |
+        # ddos prevention bts event
+        -A INPUT -p tcp --dport 9100 -j DROP
+
+  - name: Install iptables rules
+    shell: "/usr/cumulus/bin/cl-acltool -i"
+
+- name: Add rules to iptables fuj
+  hosts: subspace-fuj
+  gather_facts: false
+ 
+  tasks:
+  - name: Add iptables rules for ddos fuj
+    blockinfile:
+      path: /etc/cumulus/acl/policy.d/40_dos_protect.rules
+      block: |
+        # ddos prevention bts event
+        -A INPUT -p tcp --dport 9100 -j DROP
+
+  - name: Install iptables rules
+    shell: "/usr/cumulus/bin/cl-acltool -i"
+
+- name: Add rules to iptables dbx
+  hosts: subspace-dx1
+  gather_facts: false
+
+  tasks:
+  - name: Add iptables rules for ddos dbx
+    blockinfile:
+      path: /etc/cumulus/acl/policy.d/40dos_attack_acl.rules
+      block: |
+        # ddos prevention bts event
+        -A INPUT -p tcp --dport 9100 -j DROP
+
+  - name: Install iptables rules
+    shell: "/usr/cumulus/bin/cl-acltool -i"

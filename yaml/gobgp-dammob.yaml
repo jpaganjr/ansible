@@ -1,0 +1,47 @@
+---
+- name: dam mob
+  hosts: subspace-mob-dam1
+  gather_facts: false
+  
+  tasks:
+  - name: copy new daemon and backup the current
+    copy: 
+      src:  '{{item}}'
+      dest: /usr/local/bin
+      mode: a+x
+      backup: yes
+      remote_src: yes
+      with_items:
+      - /root/gobgp_new/gobgp
+      - /root/gobgp_new/gobgpd
+    tags:
+    - copy
+    register: print_output
+  - debug: var=print_output
+  
+  - name: restart gobgp daemon
+    systemd:
+      name: gobgpd
+      state: restarted
+    tags:
+    - restart
+    register: print_output
+  - debug: var=print_output
+  
+  - name: reannounce overlays and site local
+    shell: '{{item}}'
+    with_items:
+        - gobgp g r a -a ipv4 143.131.160.0/24
+        - gobgp g r a -a ipv4 143.131.161.0/24
+        - gobgp g r a -a ipv4 170.52.3.0/24
+    tags:
+    - announce
+    register: print_output
+  - debug: var=print_output
+
+  - name: verify announcements dam mob
+    shell: "gobgp n 86.51.21.42 adj-out"
+    tags:
+    - verify
+    register: print_output
+  - debug: var=print_output

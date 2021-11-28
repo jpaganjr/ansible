@@ -1,0 +1,16 @@
+---
+- name: Get ip access-lists
+  hosts: fgw-mdf-cs01.netmgmt.loc
+  gather_facts: false
+  connection: local
+  
+  tasks:
+    - name: get ip access-lists
+      nxos_command:
+        commands:
+          - show ip access-lists
+      register: print_output
+    - debug: var=print_output.stdout_lines
+
+    - name: save output to file
+      copy: content="{{ print_output.stdout[0] }}" dest="./{{ inventory_hostname_short }}.txt"    
